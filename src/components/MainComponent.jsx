@@ -1,30 +1,135 @@
-import { useEffect } from "react";
+import ProductItem from "./ProductItem"
 
-function MainComponent ({pokemon:{name, type, type_2, hp, attack, defense, sp_atk, sp_def, speed, image_url}}) {
+function MainComponent () {
+  const pokemons = [
+    {
+      id: 1,
+      name: 'Bulbasaur',
+      type: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/b/bf/Grass_big.png?width=1920',
+      type_2: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/5/50/Poison_big.png?width=1920',
+      hp:	45,
+      attack:	49,	
+      defense: 49,	
+      sp_atk: 65,	
+      sp_def:	65,	
+      speed: 45,
+      image_url: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/6/60/Pokemans_001.gif?width=1920'
+    },
+    {
+      id: 2,
+      name: 'Ivysaur',
+      type: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/b/bf/Grass_big.png?width=1920',
+      type_2: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/5/50/Poison_big.png?width=1920',
+      hp:	60,
+      attack:	62,	
+      defense: 63,	
+      sp_atk: 80,	
+      sp_def:	80,	
+      speed: 60,
+      image_url: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/2/24/Pokemans_002.gif?width=1920'
+    },
+    {
+      id: 3,
+      name: 'Venusaur',
+      type: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/b/bf/Grass_big.png?width=1920',
+      type_2: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/5/50/Poison_big.png?width=1920',
+      hp:	80,
+      attack:	82,	
+      defense: 83,	
+      sp_atk: 100,	
+      sp_def:	100,	
+      speed: 80,
+      image_url:'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/3/38/Pokemans_003.gif?width=1920'
+    },
+    {
+      id: 4,
+      name: 'Charmander',
+      type: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/9/95/Fire_big.png?width=1920',
+      type_2: '',
+      hp:	39,
+      attack:	52,	
+      defense: 43,	
+      sp_atk: 60,	
+      sp_def:	50,	
+      speed: 65,
+      image_url:'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/1/12/Pokemans_004.gif?width=1920'
+    },
+    {
+      id: 5,
+      name: 'Charmeleon',
+      type: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/9/95/Fire_big.png?width=1920',
+      type_2: '',
+      hp:	58,
+      attack:	64,	
+      defense: 58,	
+      sp_atk: 80,	
+      sp_def:	65,	
+      speed: 80,
+      image_url:'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/4/40/Pokemans_005.gif?width=1920'
+    },
+    {
+      id: 6,
+      name: 'Charizard',
+      type: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/9/95/Fire_big.png?width=1920',
+      type_2: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/a/ae/Flying_big.png?width=325',
+      hp:	78,
+      attack:	84,	
+      defense: 78,	
+      sp_atk: 109,	
+      sp_def:	85,	
+      speed: 100,
+      image_url:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1nL5eac-hNXxsFltNSpln_G5GLQ72yH-Fz7yLWLKOi5XLGfJOjf0MhNVe3dPxB08JSlI&usqp=CAU'
+    },
+    {
+      id: 7,
+      name: 'Squirtle',
+      type: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/9/9d/Water_big.png?width=1920',
+      type_2: '',
+      hp:	44,
+      attack:	48,	
+      defense: 65,	
+      sp_atk: 50,	
+      sp_def:	64,	
+      speed: 43,
+      image_url:'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/d/da/Pokemans_007.gif'
+    },
+    {
+      id: 8,
+      name: 'Wartortle',
+      type: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/9/9d/Water_big.png?width=1920',
+      type_2: '',
+      hp:	59,
+      attack:	63,	
+      defense: 80,	
+      sp_atk: 65,	
+      sp_def:	80,	
+      speed: 59,
+      image_url:'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/f/f7/Pokemans_008.gif'
+    },
+    {
+      id: 9,
+      name: 'Blastoise',
+      type: 'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/9/9d/Water_big.png?width=1920r',
+      type_2: '',
+      hp:	79,
+      attack:	83,	
+      defense: 100,	
+      sp_atk: 85,	
+      sp_def:	105,	
+      speed: 78,
+      image_url:'https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/8/8b/Pokemans_009.gif?width=325'
+    }
+  ]
+
+  const pokemonCardList = pokemons.map(
+    (pokemon) => <ProductItem pokemon={pokemon}/>
+  );
 
   return (
     <>
-      <div className="card m-3 shadow" style={{width: 23 + 'rem'}}>
-        <div className="bg-light" >
-          <img src={`${image_url}`} className="card-img-top" alt={`${name}`} style={{height: 230 + 'px', objectFit:'scale-down'}}/>
-        </div>
-        <div className="card-body">
-          <h2 className="card-title text-center">{name}</h2>
-          <h4>Base Stats</h4>
-          <ul className="list-unstyled ps-3">
-            <li className="fw-bold d-flex"><span className="text-secondary me-3">Type:</span>
-              <img src={`${type}`} style={{width: 50 + 'px'}}/>
-              <img className={`${!type_2 ? 'd-none': 'd-block'}`} src={`${type_2}`} style={{width: 50 + 'px'}}/>
-            </li>
-            <li className="fw-bold"><span className="text-secondary me-2">HP:</span>{hp}</li>
-            <li className="fw-bold"><span className="text-secondary me-2">Attack:</span>{attack}</li>
-            <li className="fw-bold"><span className="text-secondary me-2">Defense:</span>{defense}</li>
-            <li className="fw-bold"><span className="text-secondary me-2">Sp. Atk:</span>{sp_atk}</li>
-            <li className="fw-bold"><span className="text-secondary me-2">Sp. Def:</span>{sp_def}</li>
-            <li className="fw-bold"><span className="text-secondary me-2">Speed:</span>{speed}</li>
-          </ul>
-        </div>
-      </div>
+      <div className="container d-flex flex-wrap justify-content-center">
+        {pokemonCardList}
+      </div>   
     </>
   )
 }

@@ -1,3 +1,5 @@
+import Pokedex_logo from "../assets/Pokedex_logo.png"
+
 function Navbar (){
   return(
     <>
