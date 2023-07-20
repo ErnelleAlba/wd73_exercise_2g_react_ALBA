@@ -1,4 +1,5 @@
-import ProductItem from "./ProductItem"
+import PokemonCard from "./PokemonCard";
+import ProductItem from "./PokemonCard"
 
 function MainComponent () {
   const pokemons = [
@@ -122,7 +123,7 @@ function MainComponent () {
   ]
 
   const pokemonCardList = pokemons.map(
-    (pokemon) => <ProductItem pokemon={pokemon}/>
+    (pokemon) => <PokemonCard pokemon={pokemon}/>
   );
 
   return (
